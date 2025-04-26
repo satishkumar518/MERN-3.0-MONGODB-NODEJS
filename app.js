@@ -1,6 +1,7 @@
 const express = require('express')
 const connectToDatabase = require('./database')
 const app = express()
+app.use(express.json())
 
 // database connection here 
 connectToDatabase()
@@ -19,6 +20,14 @@ app.get("/about",(re,res)=>{
         message: "About Page is open"
     })
 })
+
+// create post api
+app.post("/blog",(req,res)=>{
+    console.log(req.body)
+    res.status(200).json({
+        message: "Blog Api Hit Successfully"
+    })
+}) 
 
 
 
