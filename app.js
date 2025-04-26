@@ -1,5 +1,6 @@
 const express = require('express')
 const connectToDatabase = require('./database')
+const Blog = require('./model/blogModel')
 const app = express()
 app.use(express.json())
 
@@ -22,8 +23,15 @@ app.get("/about",(re,res)=>{
 })
 
 // create post api
-app.post("/blog",(req,res)=>{
-    console.log(req.body)
+app.post("/blog",async(req,res)=>{
+    const {title,subtitle,description,image} = req.body
+    await Blog.create({
+         Title : title,
+         SubTitle: subtitle,
+         Description: description,
+         Image: image
+    })
+    
     res.status(200).json({
         message: "Blog Api Hit Successfully"
     })

@@ -10,7 +10,7 @@ const blogSchema = new Schema({
         type: String
     }, 
     Description:{
-        type: Text
+        type: String
     },
     Image:{
         type: String
